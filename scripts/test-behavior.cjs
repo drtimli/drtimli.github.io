@@ -6,19 +6,19 @@ const path = require('node:path');
 const vm = require('node:vm');
 const read = name => fs.readFileSync(path.join(__dirname, '..', 'assets', name), 'utf8');
 
-function language({ lang = 'en', languages = ['en'], saved = null, blocked = false, legacy = false } = {}) {
+function language({ lang = 'en', languages = ['en'], saved = null, blocked = false, legacy = false, ua = '', view = '' } = {}) {
   let redirected, ready, stored;
-  const links = ['en', 'de', 'zh-Hans'].map(lang => ({ lang, addEventListener(type, fn) { this.click = fn; } }));
+  const links = ['en', 'de', 'zh-Hans'].map(lang => ({ lang, href: ({en:'index.html',de:'de.html','zh-Hans':'zh.html'})[lang], addEventListener(type, fn) { this.click = fn; } }));
   vm.runInNewContext(read('language.js'), {
     URL,
-    navigator: legacy ? {language: languages[0]} : {languages},
+    navigator: legacy ? {language: languages[0],userAgent:ua} : {languages,userAgent:ua},
     window: {
       localStorage: {
         getItem() { if (blocked) throw Error('Blocked'); return saved; },
         setItem(key, value) { if (blocked) throw Error('Blocked'); stored = value; }
       },
       location: {
-        href: 'https://example.com/subdir/index.html?ref=test#contact', search: '?ref=test', hash: '#contact',
+        href: 'https://example.com/subdir/index.html?ref=test' + (view ? '&view=' + view : '') + '#contact', search: '?ref=test' + (view ? '&view=' + view : ''), hash: '#contact',
         replace(url) { redirected = url; }
       }
     },
@@ -28,7 +28,7 @@ function language({ lang = 'en', languages = ['en'], saved = null, blocked = fal
       querySelectorAll() { return links; }
     }
   });
-  ready();
+  if (ready) ready();
   return {redirected, choose(index) { links[index].click(); return stored; }};
 }
 
@@ -46,6 +46,17 @@ function testLanguages() {
   for (const lang of ['de', 'zh-Hans']) assert.equal(language({lang, saved: 'en'}).redirected, undefined);
   for (const [index, expected] of ['en', 'de', 'zh'].entries()) assert.equal(language().choose(index), expected);
   assert.doesNotThrow(() => language({blocked: true}).choose(0));
+  for (const languages of [['en'], ['de-DE'], ['zh-CN']]) {
+    const result = language({ua:'MicroMessenger/8.0',languages});
+    const target = new URL(result.redirected);
+    assert.equal(target.pathname, '/subdir/connect.html');
+    assert.equal(target.searchParams.get('view'), 'wechat');
+    assert.equal(target.searchParams.get('lang'), languages[0].split('-')[0]);
+    assert.equal(target.searchParams.get('ref'), 'test');
+  }
+  assert.equal(language({ua:'MicroMessenger/8.0',view:'website'}).redirected, undefined);
+  assert.match(language({ua:'MicroMessenger/8.0',view:'website',languages:['de']}).redirected, /de.html.*view=website/);
+  assert.equal(new URL(language({lang:'de',ua:'MicroMessenger/8.0',languages:['en']}).redirected).searchParams.get('lang'), 'de');
   console.log('Language selection: regional preferences, fallback, persistence, direct URLs, blocked storage and subdirectory URLs passed');
 }
 
