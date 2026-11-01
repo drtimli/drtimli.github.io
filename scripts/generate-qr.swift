@@ -2,7 +2,7 @@ import Foundation
 import AppKit
 import CoreImage
 import Vision
-let destination = "https://drtimli.github.io/connect.html"
+let destination = CommandLine.arguments.count > 3 ? CommandLine.arguments[3] : "https://drtimli.github.io/connect.html"
 let filter = CIFilter(name: "CIQRCodeGenerator")!
 filter.setValue(Data(destination.utf8), forKey: "inputMessage")
 filter.setValue("M", forKey: "inputCorrectionLevel")
@@ -22,8 +22,8 @@ let request = VNDetectBarcodesRequest()
 request.symbologies = [.qr]
 try VNImageRequestHandler(cgImage: savedCG).perform([request])
 guard request.results?.first?.payloadStringValue == destination else { fatalError("QR verification failed") }
-print("Verified combined QR destination: \(destination)")
+print("Verified QR destination: \(destination)")
 let original = VNDetectBarcodesRequest()
 original.symbologies = [.qr]
 try VNImageRequestHandler(url: URL(fileURLWithPath: CommandLine.arguments[2])).perform([original])
-print("Original WeChat QR decoded: \(original.results?.first?.payloadStringValue != nil)")
+print("Original supplied QR decoded: \(original.results?.first?.payloadStringValue != nil)")
