@@ -54,6 +54,21 @@ function formHarness(lang, valid = true) {
   const status = {textContent: ''};
   const button = {textContent: 'Original label', disabled: false};
   const attrs = {};
+  let focused;
+  const fields = Object.fromEntries(['name', 'email', 'company', 'challenge'].map(id => {
+    const attributes = {};
+    return [id, {
+      id, value: valid ? (id === 'email' ? 'person@example.com' : 'Example') : '',
+      maxLength: id === 'email' ? 254 : id === 'challenge' ? 10000 : 200,
+      validity: {typeMismatch: false},
+      checkValidity() { return !this.validity.typeMismatch; },
+      setAttribute(key, value) { attributes[key] = value; },
+      removeAttribute(key) { delete attributes[key]; }, getAttribute(key) { return attributes[key]; },
+      focus() { focused = id; },
+      listeners: {}, addEventListener(type, fn) { this.listeners[type] = fn; }
+    }];
+  }));
+  const errors = Object.fromEntries(Object.keys(fields).map(id => [id + '-error', {textContent: '', hidden: true}]));
   const form = {
     dataset: {language: lang}, action: 'https://formspree.io/f/xljjpnjz',
     querySelector() { return button; },
@@ -63,7 +78,7 @@ function formHarness(lang, valid = true) {
     reset() { resets++; }
   };
   vm.runInNewContext(read('contact.js'), {
-    document: { getElementById(id) { return {year: {}, brief: form, status}[id]; } },
+    document: { getElementById(id) { return {year: {}, brief: form, status, ...fields, ...errors}[id]; } },
     Date, AbortController,
     FormData: class { constructor(input) { assert.equal(input, form); } },
     setTimeout(fn) { timer = fn; return 1; }, clearTimeout() {},
@@ -79,7 +94,7 @@ function formHarness(lang, valid = true) {
     }
   });
   return {
-    status, button, attrs,
+    status, button, attrs, fields, errors, get focused() { return focused; },
     submit() { return handler({preventDefault() {}}); },
     finish(ok) { resolveFetch({ok}); }, reject() { rejectFetch(Error('Offline')); }, timeout() { timer(); },
     get calls() { return calls; }, get resets() { return resets; }, get reported() { return reported; }
@@ -94,9 +109,30 @@ async function testForms() {
   ]) {
     const invalid = formHarness(lang, false);
     await invalid.submit();
-    assert.equal(invalid.calls, 0); assert.equal(invalid.reported, true); assert.ok(invalid.status.textContent);
+    assert.equal(invalid.calls, 0); assert.equal(invalid.focused, 'name');
+    assert.equal(invalid.errors['name-error'].hidden, false);
+    assert.equal(invalid.fields.name.getAttribute('aria-invalid'), 'true'); assert.ok(invalid.status.textContent);
+    const whitespace = formHarness(lang);
+    whitespace.fields.company.value = '   ';
+    await whitespace.submit();
+    assert.equal(whitespace.calls, 0); assert.equal(whitespace.focused, 'company');
+    const email = formHarness(lang);
+    email.fields.email.value = 'invalid-email'; email.fields.email.validity.typeMismatch = true;
+    await email.submit();
+    assert.equal(email.calls, 0); assert.equal(email.focused, 'email');
+    email.fields.email.value = 'person@example.com'; email.fields.email.validity.typeMismatch = false;
+    email.fields.email.listeners.input();
+    assert.equal(email.errors['email-error'].hidden, true);
+    assert.equal(email.fields.email.getAttribute('aria-invalid'), undefined);
+    assert.equal(email.status.textContent, '');
+    const long = formHarness(lang);
+    long.fields.challenge.value = 'x'.repeat(10001);
+    await long.submit();
+    assert.equal(long.calls, 0); assert.match(long.errors['challenge-error'].textContent, /10000/);
     const successForm = formHarness(lang);
+    successForm.fields.name.value = '  Example  ';
     const pending = successForm.submit();
+    assert.equal(successForm.fields.name.value, 'Example');
     assert.equal(successForm.button.disabled, true);
     assert.equal(successForm.attrs['aria-busy'], 'true');
     assert.ok(successForm.status.textContent.includes(sending));

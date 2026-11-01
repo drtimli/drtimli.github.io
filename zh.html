@@ -12,8 +12,8 @@
   <link rel="alternate" hreflang="de" href="de.html">
   <link rel="alternate" hreflang="zh-Hans" href="zh.html">
   <link rel="alternate" hreflang="x-default" href="index.html">
-  <link rel="stylesheet" href="assets/site.css">
-  <script src="assets/contact.js" defer></script>
+  <link rel="stylesheet" href="assets/site.css?v=validation-20261101">
+  <script src="assets/contact.js?v=validation-20261101" defer></script>
 </head>
 <body id="top">
   <a class="skip-link" href="#main">跳转至正文</a>
@@ -78,7 +78,7 @@
       </div>
       <form id="brief" action="https://formspree.io/f/xljjpnjz" method="POST" data-language="zh" aria-describedby="required-note privacy-note">
         <p id="required-note" class="form-note">四项均为必填项。</p>
-        <div class="field"><label for="name">您的姓名</label><input id="name" name="name" type="text" autocomplete="name" maxlength="200" placeholder="姓名" required></div><div class="field"><label for="email">电子邮箱</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="you@company.com" required></div><div class="field"><label for="company">公司</label><input id="company" name="company" type="text" autocomplete="organization" maxlength="200" placeholder="公司名称" required></div><div class="field"><label for="challenge">咨询内容</label><textarea id="challenge" name="message" maxlength="10000" placeholder="您希望探讨哪些问题？" required></textarea></div>
+        <div class="field"><label for="name">您的姓名</label><input id="name" aria-describedby="name-error" name="name" type="text" autocomplete="name" maxlength="200" placeholder="姓名" required><p class="field-error" id="name-error" hidden></p></div><div class="field"><label for="email">电子邮箱</label><input id="email" aria-describedby="email-error" name="email" type="email" autocomplete="email" maxlength="254" placeholder="you@company.com" required><p class="field-error" id="email-error" hidden></p></div><div class="field"><label for="company">公司</label><input id="company" aria-describedby="company-error" name="company" type="text" autocomplete="organization" maxlength="200" placeholder="公司名称" required><p class="field-error" id="company-error" hidden></p></div><div class="field"><label for="challenge">咨询内容</label><textarea id="challenge" aria-describedby="challenge-error" name="message" maxlength="10000" placeholder="您希望探讨哪些问题？" required></textarea><p class="field-error" id="challenge-error" hidden></p></div>
         <input type="hidden" name="language" value="zh">
         <input type="hidden" name="_subject" value="Website inquiry — Dr. Tim Li Enterprise AI">
         <div hidden aria-hidden="true"><label for="website">Website</label><input id="website" name="_gotcha" type="text" tabindex="-1" autocomplete="off"></div>

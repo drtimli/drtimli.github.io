@@ -12,8 +12,8 @@
   <link rel="alternate" hreflang="de" href="de.html">
   <link rel="alternate" hreflang="zh-Hans" href="zh.html">
   <link rel="alternate" hreflang="x-default" href="index.html">
-  <link rel="stylesheet" href="assets/site.css">
-  <script src="assets/contact.js" defer></script>
+  <link rel="stylesheet" href="assets/site.css?v=validation-20261101">
+  <script src="assets/contact.js?v=validation-20261101" defer></script>
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -78,7 +78,7 @@
       </div>
       <form id="brief" action="https://formspree.io/f/xljjpnjz" method="POST" data-language="de" aria-describedby="required-note privacy-note">
         <p id="required-note" class="form-note">Alle vier Felder sind Pflichtfelder.</p>
-        <div class="field"><label for="name">Ihr Name</label><input id="name" name="name" type="text" autocomplete="name" maxlength="200" placeholder="Vollständiger Name" required></div><div class="field"><label for="email">Ihre E-Mail-Adresse</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="sie@unternehmen.de" required></div><div class="field"><label for="company">Unternehmen</label><input id="company" name="company" type="text" autocomplete="organization" maxlength="200" placeholder="Ihr Unternehmen" required></div><div class="field"><label for="challenge">Ihre Anfrage</label><textarea id="challenge" name="message" maxlength="10000" placeholder="Was möchten Sie besprechen?" required></textarea></div>
+        <div class="field"><label for="name">Ihr Name</label><input id="name" aria-describedby="name-error" name="name" type="text" autocomplete="name" maxlength="200" placeholder="Vollständiger Name" required><p class="field-error" id="name-error" hidden></p></div><div class="field"><label for="email">Ihre E-Mail-Adresse</label><input id="email" aria-describedby="email-error" name="email" type="email" autocomplete="email" maxlength="254" placeholder="sie@unternehmen.de" required><p class="field-error" id="email-error" hidden></p></div><div class="field"><label for="company">Unternehmen</label><input id="company" aria-describedby="company-error" name="company" type="text" autocomplete="organization" maxlength="200" placeholder="Ihr Unternehmen" required><p class="field-error" id="company-error" hidden></p></div><div class="field"><label for="challenge">Ihre Anfrage</label><textarea id="challenge" aria-describedby="challenge-error" name="message" maxlength="10000" placeholder="Was möchten Sie besprechen?" required></textarea><p class="field-error" id="challenge-error" hidden></p></div>
         <input type="hidden" name="language" value="de">
         <input type="hidden" name="_subject" value="Website inquiry — Dr. Tim Li Enterprise AI">
         <div hidden aria-hidden="true"><label for="website">Website</label><input id="website" name="_gotcha" type="text" tabindex="-1" autocomplete="off"></div>

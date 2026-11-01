@@ -26,13 +26,18 @@ git diff --check
 
 The behavior tests use stubbed fetch responses and do not send inquiries.
 The form posts to `https://formspree.io/f/xljjpnjz`; its name, sender email,
-company, and inquiry fields are required. Local checks do not confirm live
+company, and inquiry fields are required. Before submission, localized inline
+validation rejects blank/whitespace-only entries, malformed email addresses, and
+values exceeding field length limits. Leading/trailing whitespace is trimmed.
+Errors are linked to fields for assistive technology, the first invalid field
+receives focus, and errors clear when corrected. Native HTML validation remains
+available when JavaScript is disabled. Local checks do not confirm live
 Formspree account configuration or delivery to an inbox. Real test submissions
 require the owner's approval.
 
 Browser review covered English, German, and Chinese at 320, 768, and 1440 pixel
 viewport widths, FAQ expansion, language switching and remembered choices, and
-native required-field validation. There was no horizontal overflow or missing
+localized inline validation (with native HTML validation as a no-JavaScript fallback). There was no horizontal overflow or missing
 image at those widths. This is local validation, not a deployment check.
 
 ## Language selection
