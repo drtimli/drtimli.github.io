@@ -6,15 +6,30 @@
   <meta name="robots" content="noindex">
   <title>Connect | Dr. Tim Li Enterprise AI</title>
   <link rel="stylesheet" href="assets/site.css?v=connect-20261101">
-  <script src="assets/connect.js?v=wechat-entry-20261102" defer></script>
+  <script src="assets/connect.js?v=compact-20261102" defer></script>
   <style>
-    .connect-page { max-width: 560px; margin: 35px auto; padding: 0 24px; text-align: center; }
-    .connect-page .brand { width: 270px; max-width: 100%; margin: 0 auto 24px; }
-    .connect-page h1 { font-size: 32px; letter-spacing: -.5px; margin: 24px 0 15px; }
+    .connect-page { max-width: 560px; margin: 14px auto; padding: 0 22px; text-align: center; }
+    .connect-page .brand { width: 180px; max-width: 100%; margin: 0 auto 6px; }
+    .connect-page #connect-title { font-size: 25px; letter-spacing: -.5px; margin: 10px 0 8px; }
     .connect-page .languages { justify-content: center; border: 0; padding: 0; }
-    .wechat-code { width: 360px; max-width: 100%; margin: 16px auto; }
-    .connect-page .actions { justify-content: center; }
-    .connect-page .form-note { margin-top: 22px; }
+    #connect-help { font-size: 14px; line-height: 1.45; margin-bottom: 8px; }
+    .wechat-code { width: 210px; max-width: 100%; margin: 8px auto; }
+    .connect-page .actions { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 12px; margin: 12px 0 0; }
+    .connect-page .button { justify-content: center; padding: 10px 12px; min-height: 44px; font-size: 13px; }
+    .connect-page .text-link { font-size: 13px; }
+    .connect-page .form-note { margin: 8px 0 0; line-height: 1.4; }
+    @media (max-height: 740px) {
+      .connect-page { margin-block: 8px; }
+      .connect-page .brand { width: 150px; }
+      .connect-page #connect-title { font-size: 23px; margin-top: 6px; }
+      #connect-help { font-size: 13px; }
+      .wechat-code { width: 160px; margin-block: 6px; }
+    }
+    @media (max-height: 600px) {
+      .connect-page .brand { width: 130px; }
+      .connect-page #connect-title { font-size: 21px; }
+      .wechat-code { width: 150px; }
+    }
   </style>
 </head>
 <body>
@@ -22,7 +37,7 @@
     <a class="brand" href="index.html?view=website"><img src="assets/logo.png?v=refined-20261101" width="2172" height="724" alt="Dr. Tim Li Enterprise AI"></a>
     <nav class="languages" aria-label="Language"><a href="?view=wechat&amp;lang=en" lang="en">EN</a><a href="?view=wechat&amp;lang=de" lang="de">DE</a><a href="?view=wechat&amp;lang=zh" lang="zh-Hans">中文</a></nav>
     <h1 id="connect-title">Connect on WeChat</h1>
-    <p id="connect-help">In WeChat, press and hold the image and choose the QR recognition option. Otherwise, scan it with WeChat or save it and select it from your album in WeChat’s scanner.</p>
+    <p id="connect-help">In WeChat, press and hold the code to recognize it. Or scan it with WeChat, or save the image and select it in WeChat’s scanner.</p>
     <img class="wechat-code" src="assets/wechat-contact.jpg" width="888" height="1131" alt="Tim Li’s WeChat contact QR code" id="wechat-image">
     <p id="connect-note" class="form-note">Adding a contact requires your confirmation in WeChat.</p>
     <div class="actions"><a id="connect-website" class="button" href="index.html?view=website">Visit the website ↗</a><a id="connect-save" class="text-link" href="assets/wechat-contact.jpg" download="Tim-Li-WeChat.jpg">Save WeChat QR code</a></div>

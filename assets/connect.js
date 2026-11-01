@@ -11,13 +11,13 @@
   var messages = {
     en: {
       title: 'Connect on WeChat',
-      help: 'In WeChat, press and hold the image and choose the QR recognition option. Otherwise, scan it with WeChat or save it and select it from your album in WeChat’s scanner.',
+      help: 'In WeChat, press and hold the code to recognize it. Or scan it with WeChat, or save the image and select it in WeChat’s scanner.',
       note: 'Adding a contact requires your confirmation in WeChat.',
       website: 'Visit the website ↗', save: 'Save WeChat QR code', alt: 'Tim Li’s WeChat contact QR code', page: 'index.html'
     },
     de: {
       title: 'Kontakt über WeChat',
-      help: 'Halten Sie in WeChat das Bild gedrückt und wählen Sie die QR-Erkennung. Alternativ scannen Sie es mit WeChat oder speichern es und wählen es im WeChat-Scanner aus Ihrem Album aus.',
+      help: 'In WeChat: Code gedrückt halten und erkennen. Oder mit WeChat scannen bzw. das gespeicherte Bild im Scanner aus dem Album wählen.',
       note: 'Das Hinzufügen eines Kontakts erfordert Ihre Bestätigung in WeChat.',
       website: 'Zur Website ↗', save: 'WeChat-QR-Code speichern', alt: 'WeChat-Kontakt-QR-Code von Tim Li', page: 'de.html'
     },
