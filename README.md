@@ -60,3 +60,28 @@ layout space. Page colors use the approved Ocean blue palette: white,
 `#082238`, `#455867`, and `#0077A6`.
 
 No publishing or deployment is performed by the validation commands.
+
+## Combined website / WeChat QR
+
+`assets/website-wechat-qr.png` encodes `https://drtimli.github.io/connect.html`.
+The original supplied WeChat card is preserved as `assets/wechat-contact.jpg`.
+Both images were successfully decoded locally with macOS Vision.
+
+With JavaScript enabled, `connect.html` detects the WeChat user agent and shows
+the contact code with localized recognition instructions. Other browsers go to
+the main website, which retains its existing language negotiation. The contact
+sections link to `connect.html?view=wechat&lang=en` (or `de` / `zh`) to show the
+WeChat card in any browser. Without JavaScript the contact card and website link
+remain available. No automatic friend addition or direct profile-opening is
+claimed. Long-press recognition and adding a contact still need testing on an
+actual phone in WeChat.
+
+Run `node scripts/test-connect.cjs` for local routing/localization tests. This
+combined QR is ready for review but requires publication of the new page and
+assets before its public URL will work. No deployment has been performed.
+
+On macOS, regenerate and decode-check the combined QR with:
+
+```sh
+swift scripts/generate-qr.swift assets/website-wechat-qr.png assets/wechat-contact.jpg
+```

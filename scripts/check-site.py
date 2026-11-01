@@ -67,3 +67,13 @@ for name, lang in [('index.html', 'en'), ('de.html', 'de'), ('zh.html', 'zh-Hans
         assert expected in text, f'Missing {expected}'
     assert 'download=' not in text
     print(f'{name}: structure, fields, local assets, anchors, and contact links passed')
+
+connect_path = ROOT / 'connect.html'
+connect = Page(connect_path)
+assert connect.headings == 1
+for link in connect.links:
+    url = urlsplit(link)
+    if not url.scheme and not url.netloc:
+        assert (ROOT / url.path if url.path else connect_path).exists(), f'Missing QR page target: {link}'
+assert (ROOT / 'assets/website-wechat-qr.png').exists()
+print('connect.html: structure and local links/assets passed')
