@@ -46,17 +46,12 @@ function testLanguages() {
   for (const lang of ['de', 'zh-Hans']) assert.equal(language({lang, saved: 'en'}).redirected, undefined);
   for (const [index, expected] of ['en', 'de', 'zh'].entries()) assert.equal(language().choose(index), expected);
   assert.doesNotThrow(() => language({blocked: true}).choose(0));
-  for (const languages of [['en'], ['de-DE'], ['zh-CN']]) {
-    const result = language({ua:'MicroMessenger/8.0',languages});
-    const target = new URL(result.redirected);
-    assert.equal(target.pathname, '/subdir/connect.html');
-    assert.equal(target.searchParams.get('view'), 'wechat');
-    assert.equal(target.searchParams.get('lang'), languages[0].split('-')[0]);
-    assert.equal(target.searchParams.get('ref'), 'test');
+  // Visiting the website inside WeChat must never route to the contact card.
+  for (const lang of ['en', 'de', 'zh-Hans']) {
+    assert.equal(language({lang,ua:'MicroMessenger/8.0',languages:['en']}).redirected, undefined);
   }
-  assert.equal(language({ua:'MicroMessenger/8.0',view:'website'}).redirected, undefined);
-  assert.match(language({ua:'MicroMessenger/8.0',view:'website',languages:['de']}).redirected, /de.html.*view=website/);
-  assert.equal(new URL(language({lang:'de',ua:'MicroMessenger/8.0',languages:['en']}).redirected).searchParams.get('lang'), 'de');
+  assert.equal(language({ua:'MicroMessenger/8.0',languages:['de']}).redirected, base + 'de.html?ref=test#contact');
+  assert.equal(language({ua:'MicroMessenger/8.0',languages:['zh-CN']}).redirected, base + 'zh.html?ref=test#contact');
   console.log('Language selection: regional preferences, fallback, persistence, direct URLs, blocked storage and subdirectory URLs passed');
 }
 

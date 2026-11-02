@@ -42,8 +42,8 @@
   ['title', 'help', 'note', 'website', 'save'].forEach(function (key) {
     document.getElementById('connect-' + key).textContent = copy[key];
   });
-  document.getElementById('connect-website').href = copy.page + '?view=website';
-  document.querySelector('.brand').href = copy.page + '?view=website';
+  document.getElementById('connect-website').href = copy.page;
+  document.querySelector('.brand').href = copy.page;
   document.getElementById('wechat-image').alt = copy.alt;
   document.querySelectorAll('.languages a').forEach(function (link) {
     if (link.lang.split('-')[0] === lang) link.setAttribute('aria-current', 'page');

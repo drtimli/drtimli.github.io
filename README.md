@@ -86,17 +86,14 @@ On macOS, regenerate and decode-check the combined QR with:
 swift scripts/generate-qr.swift assets/website-wechat-qr.png assets/wechat-contact.jpg
 ```
 
-## Keep the original website QR
+## Website and combined QR entry points
 
-A QR encoding `https://drtimli.github.io/` now also supports the WeChat entry
-flow without changing its image or payload. `assets/language.js` detects
-`MicroMessenger` on the main pages and redirects to the localized WeChat card.
-Ordinary browsers keep the existing website/language behavior. The contact
-page's logo and website button use `?view=website` to let WeChat visitors browse
-without a redirect loop; language-switch links preserve this bypass.
-
-This depends on JavaScript and an identifiable WeChat user agent. It displays
-the supplied WeChat code; recognition and adding a contact still require user
-action. Local tests simulate app identity; an actual WeChat phone scan remains
-to be checked after publication. No WhatsApp native-scanner compatibility is
-implied. The QR image files have not been changed.
+The homepage and its language variants always show the website, including when
+opened in WeChat. Language selection and remembered manual choices are retained.
+Only `connect.html`, encoded in `assets/website-wechat-qr.png`, detects WeChat:
+it shows the WeChat contact card there and redirects ordinary browsers to the
+website. The contact card's website links lead directly to the localized site;
+no bypass parameter is required. The latest compact QR layout is retained.
+WhatsApp is not part of this combined QR flow; the website's ordinary WhatsApp
+contact link remains available. Actual phone behavior still requires checking
+after publication. These local changes do not push or deploy anything.
