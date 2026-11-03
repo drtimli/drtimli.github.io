@@ -13,8 +13,8 @@
   } catch (_) {
     // A missing timezone leaves the optional location hidden.
   }
-  if (!chineseLanguage && !chinaTimezone) return;
+  var showChina = chineseLanguage || chinaTimezone;
   document.querySelectorAll('.china-presence').forEach(function (item) {
-    item.hidden = false;
+    item.hidden = !showChina;
   });
 }());

@@ -517,3 +517,6 @@ html[lang="zh-Hans"] .hero h1 { font-size: clamp(42px, 4.5vw, 62px); }
   html[lang="de"] .hero h1 { font-size: clamp(35px, 8vw, 45px); }
   html[lang="zh-Hans"] .hero h1 { font-size: clamp(37px, 8.6vw, 49px); }
 }
+
+/* Honor the conditional contact location regardless of general span styles. */
+.china-presence[hidden] { display: none !important; }
