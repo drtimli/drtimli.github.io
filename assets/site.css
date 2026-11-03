@@ -87,8 +87,8 @@ h3 { font-size: 21px; font-weight: 600; letter-spacing: -.4px; line-height: 1.3;
 .contact-links { display: flex; flex-wrap: wrap; gap: 24px; font-size: 14px; }
 form { border-top: 2px solid var(--blue); padding-top: 18px; min-width: 0; }
 .field { margin-bottom: 18px; }
-.field-error { color: #a12828; font-size: 13px; line-height: 1.5; margin: 7px 0 0; }
-input[aria-invalid="true"], textarea[aria-invalid="true"] { border: 2px solid #a12828; }
+.field-error { color: #8b264b; font-size: 13px; line-height: 1.5; margin: 7px 0 0; }
+input[aria-invalid="true"], textarea[aria-invalid="true"] { border: 2px solid #8b264b; }
 label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 7px; }
 input, textarea { width: 100%; border: 1px solid #91a6b4; border-radius: 2px; background: white; color: var(--navy); padding: 12px; font-size: 16px; }
 textarea { min-height: 120px; resize: vertical; }
@@ -221,3 +221,205 @@ html[lang="zh-Hans"] h2 { line-height: 1.35; letter-spacing: 0; }
   .flow-node::after { animation: none !important; display: none; }
   .pillars .capability { transition: none; }
 }
+
+/* Layered enterprise AI map: richer depth without extra assets. */
+.hero-aside { position: relative; overflow: hidden; padding: 32px; border: 1px solid var(--line); border-radius: 18px; background: radial-gradient(circle at 82% 12%, #c7e8f4 0, transparent 35%), linear-gradient(145deg, #f7fbfd, #eaf4f8); box-shadow: 0 22px 55px rgba(8,34,56,.10); }
+.hero-aside::before { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(#0077a625 1px, transparent 1px); background-size: 18px 18px; mask-image: linear-gradient(120deg, transparent 25%, black); }
+.hero-aside > * { position: relative; }
+.value-flow { border-top: 0; }
+.value-flow ol { display: grid; gap: 12px; }
+.flow-node { padding: 14px 16px; border: 1px solid #bad7e3; border-radius: 12px; background: rgba(255,255,255,.88); box-shadow: 0 8px 20px rgba(8,34,56,.06); animation: node-rise .7s both; }
+.flow-node:nth-child(2) { margin-left: 18px; animation-delay: .12s; }
+.flow-node:nth-child(3) { margin-left: 36px; animation-delay: .24s; }
+.flow-node:nth-child(4) { margin-left: 54px; background: #082238; color: white; animation-delay: .36s; }
+.flow-node:last-child div > span { color: #c7e8f4; }
+.flow-node:not(:last-child)::before { left: 36px; top: 100%; height: 13px; bottom: auto; background: var(--blue); }
+.flow-node:not(:last-child)::after { display: none; }
+.flow-node strong { font-size: 15px; }
+@keyframes node-rise { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 620px) { .hero-aside { padding: 24px; } .flow-node:nth-child(n) { margin-left: 0; } }
+@media (prefers-reduced-motion: reduce) { .flow-node { animation: none; } }
+
+.flow-art { position: relative; height: 155px; margin: 12px 0 18px; }
+.flow-art svg { width: 100%; height: 100%; overflow: visible; }
+.flow-track { fill: none; stroke: #b7d9e7; stroke-width: 4; stroke-linecap: round; }
+.flow-signal { fill: none; stroke: url(#flow-gradient); stroke-width: 5; stroke-linecap: round; stroke-dasharray: 8 18; animation: signal-travel 2s linear infinite; }
+.flow-dot { fill: white; stroke: #0077a6; stroke-width: 4; }
+.dot-four { fill: #0077a6; }
+.flow-halo { fill: none; stroke: #0077a6; stroke-width: 2; transform-origin: 378px 90px; animation: halo-pulse 2.8s ease-out infinite; }
+@keyframes signal-travel { to { stroke-dashoffset: -26; } }
+@keyframes halo-pulse { 0% { transform: scale(.65); opacity: .8; } 80%,100% { transform: scale(1.5); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .flow-signal, .flow-halo { animation: none; } }
+
+/* Continuous knowledge-to-value loop. */
+.flow-art { height: 245px; margin: 2px 0 14px; }
+.flow-art .flow-track { fill: none; stroke: #bddde9; stroke-width: 5; }
+.flow-art .flow-signal { fill: none; stroke: url(#flow-gradient); stroke-width: 5; stroke-linecap: round; stroke-dasharray: 135 520; transform-origin: 210px 150px; animation: orbit-signal 6s linear infinite; }
+.flow-orbit { fill: none; stroke: #0077a6; stroke-width: 2; stroke-dasharray: 2 10; opacity: .5; }
+.flow-center { fill: #455867; font-size: 13px; font-weight: 700; letter-spacing: 3px; }
+.flow-center-ai { fill: #082238; font-size: 28px; letter-spacing: 5px; }
+@keyframes orbit-signal { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .flow-art .flow-signal { animation: none; } }
+
+/* Labeled, complete AI value loop. */
+.flow-art { height: 275px; margin: 8px 0 14px; }
+.flow-art .flow-track { fill: none; stroke: #c1dce8; stroke-width: 5; }
+.flow-art .flow-signal { fill: none; stroke: #0077a6; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 100 530; transform-origin: 210px 166px; animation: orbit-signal 7s linear infinite; }
+.flow-packet { transform-origin: 210px 166px; animation: orbit-signal 7s linear infinite; }
+.flow-packet circle { fill: #0077a6; filter: drop-shadow(0 0 5px #45b6d7); }
+.flow-label { fill: #082238; font-size: 13px; font-weight: 700; }
+.flow-center { font-size: 11px; }
+.flow-center-ai { font-size: 25px; }
+@media (prefers-reduced-motion: reduce) { .flow-packet, .flow-art .flow-signal { animation: none; } }
+
+/* The loop diagram now carries the message on its own. */
+.hero-aside .flow-art { margin-bottom: 0; }
+
+/* Final page rhythm and hierarchy. */
+.hero { padding-block: clamp(54px, 7vw, 94px); }
+.hero-copy { max-width: 640px; }
+.hero-intro { max-width: 540px; font-size: clamp(20px, 2vw, 25px); font-weight: 500; }
+.hero-description { max-width: 510px; }
+.hero-aside { box-shadow: 0 16px 40px rgba(8,34,56,.08); }
+.section { padding-block: clamp(62px, 7vw, 94px); }
+.section-heading { align-items: end; }
+.pillars { gap: 12px 34px; }
+.pillars .capability { padding: 27px 24px; border-radius: 8px; }
+.pillars .capability:hover { background: #f2f7fa; }
+.difference { margin-top: 52px; border-radius: 8px; }
+.engagements article { padding-right: 10px; }
+.faq-section { align-items: start; }
+.contact-section { align-items: start; }
+@media (max-width: 620px) { .hero { padding-block: 42px; } .pillars .capability { padding-inline: 0; } .difference { margin-top: 34px; } }
+
+/* One moving arc makes the direction and completion of the loop legible. */
+.flow-art .flow-track { stroke: #c9e3ed; stroke-width: 7; }
+.flow-art .flow-signal { stroke: #0077a6; stroke-width: 7; stroke-dasharray: 115 514; animation: loop-progress 8s linear infinite; }
+.flow-packet { animation: loop-progress 8s linear infinite; }
+.flow-packet circle { fill: white; stroke: #0077a6; stroke-width: 3; filter: drop-shadow(0 0 7px #45b6d7); }
+.flow-art .flow-dot { transition: none; animation: node-emphasis 8s ease-in-out infinite; }
+.flow-art .flow-dot.stage-goal { animation-delay: 0s; }
+.flow-art .flow-dot.stage-knowledge { animation-delay: -6s; }
+.flow-art .flow-dot.stage-workflow { animation-delay: -4s; }
+.flow-art .flow-dot.stage-value { animation-delay: -2s; }
+@keyframes loop-progress { to { transform: rotate(360deg); } }
+@keyframes node-emphasis { 0%, 5%, 100% { stroke-width: 5; fill: #c7e8f4; } 12%, 90% { stroke-width: 4; fill: white; } }
+@media (prefers-reduced-motion: reduce) { .flow-art .flow-signal, .flow-packet, .flow-art .flow-dot { animation: none; } }
+
+/* A quiet blue surface gives the six reasons a shared visual home. */
+.difference {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f4f9fc 0%, #e6f2f8 100%);
+  border: 1px solid #d4e6ee;
+  border-top: 3px solid var(--blue);
+  box-shadow: 0 12px 34px rgba(8,34,56,.05);
+}
+.difference::before {
+  content: '';
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  right: -150px;
+  top: -210px;
+  border: 1px solid rgba(0,119,166,.13);
+  border-radius: 50%;
+  box-shadow: 0 0 0 38px rgba(0,119,166,.025), 0 0 0 76px rgba(0,119,166,.02);
+  pointer-events: none;
+}
+.difference > * { position: relative; }
+.difference-grid article { padding-top: 17px; border-top: 1px solid #c9dee8; }
+
+/* Crisp cool surfaces: no creamy gradient or ambient glow. */
+.difference { background: #e9f3f8; box-shadow: none; border-color: #b9d7e5; border-top-color: var(--blue); }
+.difference::before { display: none; }
+.hero-aside { background: #edf5f9; box-shadow: none; }
+.hero-aside::before { display: none; }
+.flow-packet circle { filter: none; }
+
+/* White surfaces with restrained blue structure. */
+.hero-aside, .difference { background: #fff; }
+
+/* Keep section 01 on the same white canvas at every interaction state. */
+.pillars .capability,
+.pillars .capability:hover,
+.pillars .capability:focus-within { background: transparent; }
+
+/* The service connects every stage of the customer's value loop. */
+.service-links path { fill: none; stroke: #b7d5e2; stroke-width: 2; stroke-dasharray: 4 6; animation: service-link 8s ease-in-out infinite; }
+.service-links path:nth-child(2) { animation-delay: -6s; }
+.service-links path:nth-child(3) { animation-delay: -4s; }
+.service-links path:nth-child(4) { animation-delay: -2s; }
+.flow-art .flow-center { fill: #0077a6; font-size: 13px; letter-spacing: 2px; }
+.flow-art .flow-center-ai { fill: #082238; font-size: 18px; letter-spacing: 2px; }
+@keyframes service-link { 0%, 12%, 100% { stroke: #0077a6; stroke-width: 4; stroke-dasharray: none; } 18%, 94% { stroke: #b7d5e2; stroke-width: 2; stroke-dasharray: 4 6; } }
+@media (prefers-reduced-motion: reduce) { .service-links path { animation: none; } }
+
+.service-core { fill: #fff; stroke: #0077a6; stroke-width: 3; filter: drop-shadow(0 3px 8px rgba(8,34,56,.12)); }
+.service-links path { stroke: #0077a6; stroke-width: 3; stroke-dasharray: none; opacity: .55; }
+@media (prefers-reduced-motion: reduce) { .service-links path { opacity: .7; } }
+
+.collaboration-symbol { font-size: 43px; dominant-baseline: auto; }
+
+/* Better proportions for the compact brand and value loop. */
+.hero { grid-template-columns: minmax(0, 1.35fr) minmax(340px, .9fr); gap: clamp(34px, 5vw, 70px); }
+.hero-aside { padding: clamp(22px, 2.5vw, 34px); }
+.hero-aside .brand-name { font-size: 23px; margin-bottom: 7px; }
+.hero-aside .brand-descriptor { font-size: 17px; letter-spacing: 3px; margin-bottom: 7px; }
+.hero-aside .supporting-line { font-size: 13px; margin-bottom: 12px; }
+.flow-art { height: clamp(225px, 23vw, 275px); margin: 0; }
+.collaboration-symbol { font-size: 38px; }
+@media (max-width: 850px) {
+  .hero { grid-template-columns: minmax(0, 1fr) minmax(290px, .85fr); gap: 28px; }
+  .hero-aside { padding: 20px; }
+  .flow-art { height: 225px; }
+}
+@media (max-width: 620px) {
+  .hero { grid-template-columns: 1fr; gap: 26px; }
+  .hero-aside { padding: 22px; }
+  .flow-art { height: min(67vw, 260px); }
+}
+
+/* Unified editorial rhythm across the full page. */
+:root { --soft-line: #dce7ed; }
+body { line-height: 1.6; }
+.wrap { width: min(1180px, calc(100% - 72px)); }
+.site-header { min-height: 96px; }
+.main-nav a { transition: color .18s ease; }
+.main-nav a:hover, .main-nav a:focus-visible { color: var(--blue); }
+.hero { align-items: center; }
+.hero h1 { max-width: 690px; line-height: 1.08; }
+.hero-intro { line-height: 1.35; }
+.hero-description { line-height: 1.7; }
+.hero-aside { border: 1px solid var(--soft-line); border-radius: 10px; }
+.section-heading { gap: clamp(30px, 6vw, 90px); }
+.section-heading p { max-width: 570px; line-height: 1.75; }
+.capability h3 { margin: 12px 0 10px; }
+.capability p { line-height: 1.7; }
+.capability .application { margin-top: 19px; padding-left: 14px; }
+.difference { padding: clamp(28px, 4vw, 48px); border: 1px solid var(--soft-line); border-top: 2px solid var(--blue); border-radius: 8px; }
+.difference-grid { column-gap: clamp(25px, 5vw, 65px); row-gap: 26px; }
+.difference-grid article { padding-top: 18px; }
+.engagements { gap: 24px; }
+.engagements article { padding-top: 22px; }
+.engagements h3 { line-height: 1.35; }
+.faq-section { gap: clamp(35px, 7vw, 100px); }
+.faqs summary { line-height: 1.45; }
+.contact-section { gap: clamp(40px, 8vw, 110px); }
+.contact-copy > p:not(.eyebrow) { max-width: 500px; }
+.site-footer { padding-block: 30px; }
+@media (max-width: 850px) {
+  .wrap { width: calc(100% - 48px); }
+  .site-header { min-height: auto; }
+}
+@media (max-width: 620px) {
+  .wrap { width: calc(100% - 36px); }
+  .main-nav { overflow-x: auto; justify-content: flex-start; gap: 18px; white-space: nowrap; }
+  .main-nav a { flex: 0 0 auto; }
+  .hero h1 { line-height: 1.13; }
+  .section { padding-block: 52px; }
+  .section-heading { gap: 15px; }
+  .difference { padding: 25px 20px; }
+  .engagements { gap: 28px 18px; }
+}
+@media (prefers-reduced-motion: reduce) { .main-nav a { transition: none; } }
