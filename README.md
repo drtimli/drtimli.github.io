@@ -52,10 +52,10 @@ all pages and language links remain available; automatic selection is disabled.
 
 ## Branding asset
 
-`assets/logo.png` is the supplied refined TL Enterprise AI logo, reused without
-alteration. It retains the smaller handwritten personal name above the spaced
-ENTERPRISE AI lettering, navy lettering/T, and ocean-blue L. Its intrinsic
-2172 × 724 dimensions are declared on all three pages to reserve the correct
+`assets/logo.png` is the supplied refined TL Enterprise AI logo. The pages use
+`assets/logo-small.png`, a 600 × 200 pixel copy resized for the header. It retains the smaller handwritten personal name above the spaced
+ENTERPRISE AI lettering, navy lettering/T, and ocean-blue L. The optimized copy’s intrinsic
+600 × 200 dimensions are declared on all three pages to reserve the correct
 layout space. Page colors use the approved Ocean blue palette: white,
 `#082238`, `#455867`, and `#0077A6`.
 
