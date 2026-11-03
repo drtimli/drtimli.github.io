@@ -423,3 +423,61 @@ body { line-height: 1.6; }
   .engagements { gap: 28px 18px; }
 }
 @media (prefers-reduced-motion: reduce) { .main-nav a { transition: none; } }
+
+/* Restore the original open, vertical hero treatment. */
+.hero-aside { overflow: visible; padding: 12px 0 12px 35px; border: 0; border-left: 1px solid var(--line); border-radius: 0; background: #fff; box-shadow: none; }
+.hero-aside::before { display: none; }
+.hero-aside .brand-name { font-size: 26px; margin-bottom: 12px; }
+.hero-aside .brand-descriptor { font-size: 20px; letter-spacing: 4px; margin-bottom: 12px; }
+.hero-aside .supporting-line { font-size: 16px; margin-bottom: 35px; }
+.hero-aside .value-flow { border-top: 2px solid var(--blue); padding-top: 20px; }
+.value-flow > .eyebrow { margin-bottom: 18px; }
+.value-flow ol { display: block; }
+.value-flow .flow-node, .value-flow .flow-node:nth-child(n) { display: flex; align-items: center; gap: 18px; margin: 0; padding: 0 0 22px; border: 0; border-radius: 0; background: transparent; box-shadow: none; animation: none; }
+.value-flow .flow-node:last-child { padding-bottom: 0; }
+.value-flow .flow-node:not(:last-child)::before { content: ''; position: absolute; left: 20px; top: 42px; bottom: 0; width: 1px; height: auto; background: var(--line); }
+.value-flow .flow-node:not(:last-child)::after { display: none; }
+.value-flow .flow-marker { flex: 0 0 42px; height: 42px; border-radius: 50%; background: #f2f7fa; color: var(--blue); border: 1px solid #b7d5e2; }
+.value-flow .flow-node:last-child .flow-marker { background: var(--blue); color: #fff; border-color: var(--blue); }
+.value-flow .flow-node strong { font-size: 15px; }
+.value-flow .flow-node div > span, .value-flow .flow-node:last-child div > span { color: var(--slate); font-size: 12px; }
+@media (max-width: 850px) { .hero-aside { padding: 12px 0 12px 25px; } }
+@media (max-width: 620px) { .hero-aside { border-left: 0; border-top: 1px solid var(--line); padding: 28px 0 0; } }
+
+/* Restore the moving signal on the original vertical connector. */
+.value-flow .flow-node:not(:last-child)::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 17px;
+  top: 42px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--blue);
+  animation: flow-travel 4.8s ease-in-out infinite;
+}
+.value-flow .flow-node:nth-child(2)::after { animation-delay: 1.6s; }
+.value-flow .flow-node:nth-child(3)::after { animation-delay: 3.2s; }
+@media (prefers-reduced-motion: reduce) {
+  .value-flow .flow-node:not(:last-child)::after { display: none; animation: none; }
+}
+
+/* Open numbered markers on the vertical value path. */
+.value-flow .flow-marker { background: transparent; }
+ .value-flow .flow-node:last-child .flow-marker { background: transparent; color: var(--blue); border-color: #b7d5e2; }
+
+/* Delayed signal dots stay hidden until their animation begins. */
+.value-flow .flow-node:not(:last-child)::after {
+  opacity: 0;
+  animation-fill-mode: backwards;
+}
+
+/* The fourth step sits on white like the others; keep its label visible. */
+.value-flow .flow-node:nth-child(4),
+.value-flow .flow-node:nth-child(4) strong { color: var(--navy); }
+
+/* Lead with the reasons to choose the practice. */
+.difference-section { padding-top: 0; padding-bottom: clamp(55px, 6vw, 78px); }
+.difference-section .difference { margin-top: 0; }
+@media (max-width: 620px) { .difference-section { padding-bottom: 45px; } }

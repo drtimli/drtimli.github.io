@@ -47,7 +47,7 @@ for name, lang in [('index.html', 'en'), ('de.html', 'de'), ('zh.html', 'zh-Hans
     path = ROOT / name
     page = Page(path)
     assert page.lang == lang and page.headings == 1
-    assert page.sections == 5 and page.faqs == 4
+    assert page.sections == 6 and page.faqs == 4
     assert page.form['action'] == 'https://formspree.io/f/xljjpnjz'
     assert page.form['method'] == 'POST'
     for id in ('name', 'email', 'company', 'challenge'):
