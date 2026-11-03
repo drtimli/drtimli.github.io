@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <symbol id="knowledge" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21V5.5ZM4 18.5A2.5 2.5 0 0 1 6.5 16H20M8 8h8M8 12h6"/></symbol>
+  <symbol id="workflow" viewBox="0 0 24 24"><rect x="2.5" y="3" width="7" height="6" rx="1"/><rect x="14.5" y="3" width="7" height="6" rx="1"/><rect x="8.5" y="15" width="7" height="6" rx="1"/><path d="M6 9v3h12V9M12 12v3"/></symbol>
+  <symbol id="decision" viewBox="0 0 24 24"><path d="M3 20h18M5 16l4-5 4 3 6-8M16 6h3v3"/><circle cx="5" cy="16" r="1"/><circle cx="9" cy="11" r="1"/><circle cx="13" cy="14" r="1"/></symbol>
+  <symbol id="engineering" viewBox="0 0 24 24"><path d="m8 6-5 6 5 6m8-12 5 6-5 6m-3-15-2 18"/></symbol>
+  <symbol id="trust" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5.2 3.1 8.6 8 11 4.9-2.4 8-5.8 8-11V5l-8-3Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></symbol>
+  <symbol id="assess" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5M8 10.5h5M10.5 8v5"/></symbol>
+  <symbol id="pilot" viewBox="0 0 24 24"><path d="M5 20h14M8 20v-6l4-10 4 10v6M8 14h8M10 8h4"/></symbol>
+  <symbol id="deliver" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4m-5-11 3 3 6-6"/></symbol>
+  <symbol id="improve" viewBox="0 0 24 24"><path d="M20 8a8 8 0 1 0 .2 7M20 3v5h-5M8 12l3 3 5-6"/></symbol>
+</svg>

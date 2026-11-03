@@ -520,3 +520,19 @@ html[lang="zh-Hans"] .hero h1 { font-size: clamp(42px, 4.5vw, 62px); }
 
 /* Honor the conditional contact location regardless of general span styles. */
 .china-presence[hidden] { display: none !important; }
+
+.feature-icon { display: block; width: 27px; height: 27px; margin-bottom: 14px; fill: none; stroke: var(--blue); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.engagements .feature-icon { margin-bottom: 16px; }
+
+/* Icons support scanning without interrupting the text hierarchy. */
+.pillars .capability { position: relative; padding-top: 27px; }
+.pillars .feature-icon { position: absolute; top: 25px; right: 22px; width: 25px; height: 25px; margin: 0; }
+.pillars .item-number { display: block; min-height: 25px; padding-top: 3px; }
+.pillars .capability h3 { margin-top: 16px; }
+.engagements article { position: relative; padding-top: 22px; }
+.engagements .feature-icon { position: absolute; top: 20px; right: 4px; width: 23px; height: 23px; margin: 0; }
+.engagements h3 { padding-right: 29px; }
+@media (max-width: 620px) {
+  .pillars .feature-icon { right: 2px; }
+  .engagements .feature-icon { right: 0; }
+}
