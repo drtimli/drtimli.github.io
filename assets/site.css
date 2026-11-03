@@ -536,3 +536,17 @@ html[lang="zh-Hans"] .hero h1 { font-size: clamp(42px, 4.5vw, 62px); }
   .pillars .feature-icon { right: 2px; }
   .engagements .feature-icon { right: 0; }
 }
+
+/* Highlight each node when the animated signal reaches it. */
+.value-flow .flow-marker { animation: flow-node-active 6.4s ease-in-out infinite; }
+.value-flow .flow-node:nth-child(2) .flow-marker { animation-delay: 1.6s; }
+.value-flow .flow-node:nth-child(3) .flow-marker { animation-delay: 3.2s; }
+.value-flow .flow-node:nth-child(4) .flow-marker { animation-delay: 4.8s; }
+.value-flow .flow-node:not(:last-child)::after { animation-duration: 6.4s; }
+.value-flow .flow-node:nth-child(2)::after { animation-delay: 1.6s; }
+.value-flow .flow-node:nth-child(3)::after { animation-delay: 3.2s; }
+@keyframes flow-node-active {
+  0%, 7% { background: #0077a6; border-color: #0077a6; color: #fff; }
+  18%, 100% { background: transparent; border-color: #b7d5e2; color: #0077a6; }
+}
+@media (prefers-reduced-motion: reduce) { .value-flow .flow-marker { animation: none; } }
