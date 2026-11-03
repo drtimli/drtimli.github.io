@@ -481,3 +481,39 @@ body { line-height: 1.6; }
 .difference-section { padding-top: 0; padding-bottom: clamp(55px, 6vw, 78px); }
 .difference-section .difference { margin-top: 0; }
 @media (max-width: 620px) { .difference-section { padding-bottom: 45px; } }
+
+/* Hero typography: stronger headline, calmer supporting copy. */
+.hero h1 { font-family: Arial, Helvetica, sans-serif; font-size: clamp(46px, 5.1vw, 70px); font-weight: 600; letter-spacing: -.045em; line-height: 1.08; text-wrap: balance; }
+.hero .eyebrow { font-size: 11px; letter-spacing: .16em; }
+.hero-intro { font-size: clamp(20px, 2.1vw, 25px); font-weight: 500; line-height: 1.42; letter-spacing: -.015em; }
+.hero-description { font-size: 16px; line-height: 1.72; }
+.hero-aside .brand-name { font-family: Georgia, 'Times New Roman', serif; font-size: 25px; font-weight: 700; letter-spacing: -.02em; }
+.hero-aside .brand-descriptor { font-size: 18px; font-weight: 700; letter-spacing: .22em; }
+.hero-aside .supporting-line { font-size: 14px; line-height: 1.45; }
+.value-flow .flow-node strong { font-size: 15px; line-height: 1.35; }
+.value-flow .flow-node div > span { font-size: 12px; line-height: 1.45; }
+html[lang="de"] .hero h1 { font-size: clamp(40px, 4.3vw, 59px); letter-spacing: -.035em; }
+html[lang="zh-Hans"] .hero h1 { font-size: clamp(43px, 4.7vw, 66px); letter-spacing: -.03em; line-height: 1.2; }
+html[lang="zh-Hans"] .hero-intro { letter-spacing: 0; }
+@media (max-width: 620px) {
+  .hero h1 { font-size: clamp(39px, 9vw, 52px); }
+  html[lang="de"] .hero h1 { font-size: clamp(35px, 8vw, 46px); }
+  html[lang="zh-Hans"] .hero h1 { font-size: clamp(38px, 8.8vw, 51px); }
+  .hero-intro { font-size: 20px; }
+}
+
+/* Compact hero type scale: headline, body, and small labels. */
+.hero h1 { font-size: clamp(44px, 4.7vw, 64px); }
+.hero-intro, .hero-description { font-size: 17px; line-height: 1.6; }
+.hero-intro { font-weight: 600; color: var(--navy); }
+.hero .eyebrow, .hero-aside .supporting-line, .value-flow .flow-node div > span { font-size: 13px; }
+.hero-aside .brand-name { font-size: 24px; }
+.hero-aside .brand-descriptor, .value-flow .flow-node strong { font-size: 16px; }
+html[lang="de"] .hero h1 { font-size: clamp(39px, 4.2vw, 57px); }
+html[lang="zh-Hans"] .hero h1 { font-size: clamp(42px, 4.5vw, 62px); }
+@media (max-width: 620px) {
+  .hero h1 { font-size: clamp(38px, 8.8vw, 50px); }
+  .hero-intro, .hero-description { font-size: 16px; }
+  html[lang="de"] .hero h1 { font-size: clamp(35px, 8vw, 45px); }
+  html[lang="zh-Hans"] .hero h1 { font-size: clamp(37px, 8.6vw, 49px); }
+}
