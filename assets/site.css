@@ -192,3 +192,32 @@ html[lang="zh-Hans"] h2 { line-height: 1.35; letter-spacing: 0; }
 @media (max-width: 620px) {
   .pillars { grid-template-columns: 1fr; }
 }
+
+/* A lightweight, code-native view of the knowledge-to-value journey. */
+.value-flow { border-top: 2px solid var(--blue); padding-top: 24px; }
+.value-flow > .eyebrow { margin-bottom: 22px; letter-spacing: 1px; }
+.value-flow ol { list-style: none; margin: 0; padding: 0; }
+.flow-node { position: relative; display: flex; align-items: center; gap: 18px; padding: 0 0 26px; }
+.flow-node:last-child { padding-bottom: 0; }
+.flow-node:not(:last-child)::before { content: ''; position: absolute; left: 20px; top: 40px; bottom: 0; width: 2px; background: #d4e1e8; }
+.flow-node:not(:last-child)::after { content: ''; position: absolute; left: 18px; top: 40px; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); animation: flow-travel 4.8s ease-in-out infinite; }
+.flow-node:nth-child(2)::after { animation-delay: 1.6s; }
+.flow-node:nth-child(3)::after { animation-delay: 3.2s; }
+.flow-marker { flex: 0 0 42px; height: 42px; display: grid; place-items: center; border: 1px solid #b7d5e2; border-radius: 50%; background: #f2f7fa; color: var(--blue); font-size: 11px; font-weight: 700; }
+.flow-node strong { display: block; font-size: 16px; line-height: 1.35; font-weight: 600; }
+.flow-node div > span { display: block; color: var(--slate); font-size: 12px; margin-top: 3px; }
+.flow-node:last-child .flow-marker { background: var(--blue); color: white; border-color: var(--blue); }
+.pillars .capability { transition: background-color .25s ease, border-color .25s ease; }
+@media (hover: hover) {
+  .pillars .capability:hover { background: #f2f7fa; border-color: var(--blue); }
+}
+@keyframes flow-travel {
+  0%, 8% { transform: translateY(0); opacity: 0; }
+  15% { opacity: 1; }
+  33% { transform: translateY(24px); opacity: 0; }
+  100% { transform: translateY(24px); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flow-node::after { animation: none !important; display: none; }
+  .pillars .capability { transition: none; }
+}
